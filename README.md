@@ -6,7 +6,7 @@
 
 We use hybrid phonetic features along with the ASR multi-task learning to boost the performance of accent recognition. The Jasper acoustic model is used to extract the phonetic information while the Transformer encoder is used to aggregate the learned feature for accent classification.
 
-# Required Packages
+## Required Packages
 
 Please install `pytorch-lightning`, `espnet`, `torchmetric` to run the code.
 
