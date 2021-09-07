@@ -1,0 +1,88 @@
+encoder:
+  activation: "relu"
+  convmask: False
+  input:
+    features: 40
+    frame_splicing: 1
+  jasper:
+    # first
+    -
+      filters: 256
+      repeat: 1
+      kernel: 11
+      stride: 2
+      dilation: 1
+      dropout: 0.2
+      residual: False
+    # 5x3
+    -
+      filters: 256
+      repeat: 3
+      kernel: 11
+      stride: 1
+      dilation: 1
+      dropout: 0.2
+      residual: True
+      residual_dense: True
+    -
+      filters: 256
+      repeat: 3
+      kernel: 11
+      stride: 1
+      dilation: 1
+      dropout: 0.2
+      residual: True
+      residual_dense: True
+    -
+      filters: 384
+      repeat: 3
+      kernel: 13
+      stride: 1
+      dilation: 1
+      dropout: 0.2
+      residual: True
+      residual_dense: True
+    -
+      filters: 384
+      repeat: 3
+      kernel: 13
+      stride: 1
+      dilation: 1
+      dropout: 0.2
+      residual: True
+      residual_dense: True
+    -
+      filters: 512
+      repeat: 3
+      kernel: 17
+      stride: 1
+      dilation: 1
+      dropout: 0.2
+      residual: True
+      residual_dense: True
+
+    # last two
+    -
+      filters: 896
+      repeat: 1
+      kernel: 29
+      stride: 1
+      dilation: 2
+      dropout: 0.4
+      residual: False
+    -
+      filters: 1024
+      repeat: 1
+      kernel: 1
+      stride: 1
+      dilation: 1
+      dropout: 0.1
+      residual: False
+  feat_out: 1024 # Need to be the same as the decoder feat_in
+  init_mode: xavier_uniform
+decoder:
+  feat_in: 1024
+  num_classes: 41
+  init_mode: xavier_uniform
+init_mode: xavier_uniform
+no_featurizer: True
